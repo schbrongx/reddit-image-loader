@@ -25,9 +25,10 @@ import logging
 import re
 import argparse
 import html
+import requests
 import PIL
 from PIL import Image
-import requests
+import pprint
 
 
 # pylint: disable=invalid-name
@@ -252,8 +253,11 @@ if __name__ == "__main__":
                             limit=args.limit,
                             flair=flair,
                             orientation="landscape")
+    # load dict of images from reddit
     ril.load_image_urls()
+
     log.debug(ril)
+
     # remove all files which are not in ril.imagedict{}
     _ril_filenames = []
     # extract filenames from ril.imagedict{}
@@ -261,7 +265,7 @@ if __name__ == "__main__":
         _filename = re.search(r"(?<=/)[\w\-\_]+\.(jpg|png)", _url).group(0)
         _filename = args.TARGETFOLDER + "/" + _filename
         _ril_filenames.append(_filename)
-        log.debug(_ril_filenames)
+    log.debug("Filenames from RIL:\n%s", pprint.PrettyPrinter(indent=2).pformat(_ril_filenames))
     # loop over all files in TARGETFOLDER
     for _localfile in listdir(args.TARGETFOLDER):
         _f = join(args.TARGETFOLDER, _localfile)
@@ -274,4 +278,6 @@ if __name__ == "__main__":
             except OSError as err:
                 log.error("Unable to remove file %s", _f)
                 log.error(str(err))
+
+    # download images from reddit
     ril.download_images()
