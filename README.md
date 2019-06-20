@@ -1,7 +1,15 @@
 # reddit-image-loader
 A Python 3 class and script to download images from subreddits.
 
-## As a script: ##
+# Table of contents
+1. [Usage as a script](#usage_script)
+2. [Usage as a class](#usage_class)
+3. [Installation](#installation)
+    1. [Prerequesites](#prerequesites)
+    2. [Setup](#setup)
+
+## Usage as a script: ##
+<a name="usage_script" />
 Usage: `ril.py [-h] [-l LIMIT] [-d] [-N | -T | -H | -R] SUBREDDIT TARGETFOLDER`
 
 Positional arguments:
@@ -26,7 +34,8 @@ This will:
 * Download all images from our list, which are not already in ./images and
 * Resize them to 1920xNNNN, preserving the ascpet-ration
 
-## As a class: ##
+## Usage as a class: ##
+<a name="usage_class" />
 ```python
 import ril
 my_ril = RedditImageLoader(subreddit="earthporn", targetfolder="./images" limit=25 flair=new orientation=landscape"
@@ -39,9 +48,12 @@ This will:
 aspect-ratio)
 
 ## Installation ##
+<a name="installation" />
 ### Prerequesites ###
+<a name="prerequesites" />
 Python 3 has to be installed.
 ## Setup ##
+<a name="setup" />
 * Clone Repository: `git clone https://github.com/schbrongx/reddit-image-loader.git`
 * Change into git repository: `cd reddit-image-loader`
 * Create a virtual environment: `python3 -m venv env`
