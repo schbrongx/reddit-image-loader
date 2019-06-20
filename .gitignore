@@ -1,4 +1,6 @@
-led / optimized / DLL files
+*.log
+
+#led / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
