@@ -1,5 +1,5 @@
 # reddit-image-loader
-A Python 3 class and script todownload images from subreddits.
+A Python 3 class and script to download images from subreddits.
 
 ## As a script: ##
 Usage: `ril.py [-h] [-l LIMIT] [-d] [-N | -T | -H | -R] SUBREDDIT TARGETFOLDER`
@@ -18,6 +18,14 @@ Optional arguments:
 * -H, --hot: Load hot posts.
 * -R, --random: Load random posts.
 
+Example:
+`ril.py -l 5 -T earthporn ./images`
+This will:
+* Load a list of 5 images in landscape-orientation
+* Remove all images, which are not in our list, from ./images/
+* Download all images from our list, which are not already in ./images and
+* Resize them to 1920xNNNN, preserving the ascpet-ration
+
 ## As a class: ##
 ```python
 import ril
@@ -27,7 +35,6 @@ my_ril.download_images()
 ```
 This will:
 * Load a list of 25 (limit) images in landscape-orientation
-* Remove all images that are NOT in this list from ./images/
 * Download images from the list which are not already downloaded and resize them to 1920xNNNN (preserving the
 aspect-ratio)
 
